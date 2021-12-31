@@ -1,19 +1,28 @@
 import './App.css';
-import Hello from './component/Hello';
-import Welcome from './component/Welcome';
-import World from './component/World';
+import Day from './component/Day.tsx';
+import DayList from './component/DayList';
+import Header from './component/Header';
+import EmptyPage from './component/EmptyPage';
+import CreateWord from './component/CreateWord';
+import CreateDay from './component/CreateDay';
+
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <Hello />
-      <Hello />
-      <Hello />
-      <World />
-      <World />
-      <Welcome />
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<DayList/>}/>
+        <Route path="/day/:day" element={<Day/>}/>
+        <Route path="*" element={<EmptyPage/>} />
+        <Route path="/create_word" element={<CreateWord/>} />
+        <Route path="/create_day" element={<CreateDay/>} />
+
+      </Routes>
     </div>
-    // App
+    </BrowserRouter>
   );
 }
 
